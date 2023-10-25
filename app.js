@@ -8,6 +8,7 @@ function letrehoz(mit) {
                          ' <button onclick="szerkeszt(this)">&#9998;</button> ' +
                          mit + 
                        '</div>'
+    ment();
 }
 
 form.onsubmit = function(e) {
@@ -23,9 +24,20 @@ form.onsubmit = function(e) {
 function torol(mit) {
     mit.parentElement.remove();
     ujElem.focus();
+    ment();
 }
 
 function szerkeszt(mit) {
     ujElem.value = mit.parentElement.innerText.substring(4);
     torol(mit);
 }
+
+function ment() {
+    localStorage.bevasarlolista = lista.innerHTML;
+}
+
+function betolt() {
+    lista.innerHTML = localStorage.bevasarlolista || '';
+}
+
+betolt();
